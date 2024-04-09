@@ -26,4 +26,35 @@ print(filtro3)
 filtro3.to_csv("Entregable3.csv")
 
 
+df['FECHA_DOC'] = pd.to_datetime(df['FECHA_DOC'])
+
+# FILTRO 4 corregido: Filtrar por rango de fechas específico
+filtro4 = df[df['FECHA_DOC'].isin(['2022-11-22', '2022-12-23'])][['SUBTOTAL_PARTIDA']]
+print(filtro4)
+filtro4.to_csv("Entregable4.csv")
+
+
+#FILTRO 5
+filtro5=df.head(8)
+filtro5
+
+#FILTRO 6
+filtro6=df[df["SUBTOTAL_PARTIDA"] > 77000]
+filtro6
+filtro6.to_csv("Entregable6.csv")
+
+#FILTRO 7
+filtro7=df[(df["SUBTOTAL_PARTIDA"] > 77000) & (df["FECHA_DOC"] == "2022-05-24")]
+filtro7
+filtro7.to_csv("Entregable7.csv")
+
+#FILTRO 8
+filtro8=df[(df["SUBTOTAL_PARTIDA"] > 77000)| (df["FECHA_DOC"] == "2022-05-24")]
+filtro8
+filtro8.to_csv("Entregable8.csv")
+
+# FILTRO 9
+filtro9=df[~(df["SUBTOTAL_PARTIDA"] > 77000) & ~(df["FECHA_DOC"] == "2022-05-24")]
+filtro9
+filtro9.to_csv("Entregable9.csv")
 
