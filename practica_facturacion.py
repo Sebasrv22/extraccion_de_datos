@@ -32,3 +32,13 @@ filtro4 = (df['CAN_TOT'] < 5951.7) | (df['STATUS'] == 'E')
 #print(filtro4)
 filtro4.to_csv("Practica_facturacion4.csv")
 
+
+# Filtro 5: Seleccionamos solo las columnas especificadas
+filtro5 = df.iloc[:, [0, 6, 7, 9]]
+print(filtro5)
+filtro5.to_csv("Practica_facturacion5.csv")
+               
+#filtro6 = df.iloc[7001:7003, [0, 1, 2]]
+#print(filtro6)
+#filtro6.to_csv("Practica_facturacion6.csv)
+               
