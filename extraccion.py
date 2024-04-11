@@ -28,7 +28,7 @@ filtro3.to_csv("Entregable3.csv")
 
 df['FECHA_DOC'] = pd.to_datetime(df['FECHA_DOC'])
 
-# FILTRO 4 corregido: Filtrar por rango de fechas específico
+# FILTRO 4  Filtrar por rango de fechas específico
 filtro4 = df[df['FECHA_DOC'].isin(['2022-11-22', '2022-12-23'])][['SUBTOTAL_PARTIDA']]
 print(filtro4)
 filtro4.to_csv("Entregable4.csv")
