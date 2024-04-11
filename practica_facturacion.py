@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 
 
 df = pd.read_excel("datos_facturacion.xlsx")
@@ -14,20 +15,20 @@ filtro2 = df[ ~(df["CVE_VEND"] == 5.0) & ~(df["CVE_VEND"] == 4.0) ]
 filtro2.to_csv("Practica_facturacion2.csv")
 
 # filtro 3
-# year
-#filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y') == '2019']
-# year-month
-#filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y-%m') == '2019-10']
-# year-month-day
-filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y-%m-%d') == '2019-10-02']
+# filtro3=df[ df["FECHA_ENT"] > datetime.datetime(2019, 9, 10)]
+# filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y-%m-%d') == '2019, 9, 30']
+df['FECHAELAB'] = pd.to_datetime(df['FECHAELAB'])
+
+# filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y') == '2019']
+# filtro3=df[ df["FECHA_ENT"].dt.strftime('%Y-%m') == '2019-10']
+filtro3=df[ df["FECHAELAB"].dt.strftime('%Y-%m-%d') == '2019-10-02']
 
 print(filtro3)
+filtro3.to_csv('practica_facturacion_3.csv')
+
 
 # Filtro 4: CAN_TOT debe ser menor que 5951.7 o STATUS debe ser 'E'
 filtro4 = (df['CAN_TOT'] < 5951.7) | (df['STATUS'] == 'E')
-print(filtro4)
+#print(filtro4)
 filtro4.to_csv("Practica_facturacion4.csv")
 
-# Filtro 5: Seleccionamos solo las columnas especificadas
-filtro5 = ['CVE_DOC', 'FECHA_ENT', 'FECHA_VEN', 'CAN_TOT']
-print(filtro5)
